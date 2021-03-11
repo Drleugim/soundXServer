@@ -1,0 +1,20 @@
+{
+  "name": "soundx-server",
+  "version": "1.0.0",
+  "description": "SoundX Server",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": "https://github.com/tanyalej/soundXServer.git",
+  "author": "Tania <tanyalej@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
