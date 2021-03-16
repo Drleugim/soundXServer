@@ -10,7 +10,7 @@ const userSchema = new Schema({
         validate: {
             async validator(email){
                 try{
-                    const user = models.User.findOne({email})
+                    const user = await models.User.findOne({email})
                     return !user
                 }
                 catch(e){
