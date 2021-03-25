@@ -33,12 +33,17 @@ const userSchema = new Schema({
     },
     documentType:{
         type: String,
-        enum: {
+        enum:{
             values: ['cedula de ciudadania', 'cedula de extranjeria', 'Pasaporte'],
             message: 'Invalid document type'
         }
     },
     documentNumber:{type: String},
+    products:{
+      type:[{type: Schema.Types.ObjectId, ref: 'Products'}],
+    }
+}, {
+  timestamps: true,
 })
 
 const User = model('User', userSchema)
