@@ -1,4 +1,5 @@
 const {model, models, Schema} = require('mongoose')
+const bcrypt = require('bcrypt')
 
 const regExForEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
@@ -44,6 +45,12 @@ const userSchema = new Schema({
     }
 }, {
   timestamps: true,
+})
+
+userSchema.pre('save', async function() {
+  if(this.password && this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 8)
+  }
 })
 
 const User = model('User', userSchema)

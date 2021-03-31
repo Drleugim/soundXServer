@@ -4,12 +4,12 @@ const User = require('../models/user.model')
 module.exports = {
   async publish(req, res) {
     try {
-      const { body, params: { userId } } = req
-      const product = await Product.create({ ...body, user: userId , picture: body.picture.secure_url})
-      const user = await User.findById(userId)
+      const { body, user } = req
+      const product = await Product.create({ ...body, user, picture: body.picture.secure_url})
+      const userUser = await User.findById(user)
 
-      user.products.push(product._id)
-      await user.save({ validateBeforeSave: false })
+      userUser.products.push(product._id)
+      await userUser.save({ validateBeforeSave: false })
       res.status(201).json(product)
     } catch(error) {
       res.status(400).json({ message: 'product could not be created', error })
