@@ -15,10 +15,23 @@ const productSchema = new Schema({
       min:[0.01, 'The price must be greater than 0 dollars'],
       required: true,
     },
+    quantity: {
+      type: Number,
+      min:[1, 'The quantity avalable must be more or equal to 1'],
+      required: true,
+    },
+    brand: {
+      type: String,
+      required: true,
+    },
+    newUsed:{
+      type:String,
+      require: true,
+    },
     description:{
       type: String,
       required: true,
-      maxLength: [500,'The description must be shorter than 500 characters']
+      maxLength: [500,'The description must be shorter than 500 characters'],
     },
     picture:{ 
       type: String,
