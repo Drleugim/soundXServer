@@ -6,7 +6,7 @@ const regExForEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 const userSchema = new Schema({
     email:{
         type: String,
-        required: true,
+        required: [true, 'Email is required'],
         match:[regExForEmail, 'Invalid email, please enter a valid email address'] ,
         validate: {
             async validator(email){
@@ -23,7 +23,7 @@ const userSchema = new Schema({
     },
     password:{
         type: String,
-        required: true,
+        required: [true,'Password is required'],
         minLength: [6,'Password must contain at least 6 characters']
     },
     name:{type: String},

@@ -16,7 +16,7 @@ module.exports = {
 
       res.status(201).json({ token })
     } catch(error) {
-      res.status(400).json({ message: 'user could not be created', error })
+      res.status(400).json({ error })
     }
   },
   async signin(req, res) {
@@ -43,7 +43,7 @@ module.exports = {
 
       res.status(201).json({ token })
     } catch(error) {
-      res.status(401).json({ message: 'user could not be found', error })
+      res.status(400).json({ message: error.message })
     }
   },
 }

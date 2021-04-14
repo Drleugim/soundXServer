@@ -1,20 +1,35 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+let connection
 
 function connect() {
-    const mongoURI = process.env.MONGO_URI||'mongodb://localhost:27017/soundx_db'
-    const options = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true, 
-    }
+  if(connection) return;
     
-    mongoose.connect(mongoURI,options)
+  const mongoURI = process.env.MONGO_URI 
+  const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,   
+  }
 
-    const { connection } = mongoose
+  mongoose.connect(mongoURI, options)
 
-    connection.once('open',()=> console.log('Successfully connected'))
-    connection.on('error', err => console.log('Connection error',err))
+  connection = mongoose.connection
 
-    return connection
+  connection.once('open', () => console.log('Successfully connected'))
+  connection.on('error', err => console.log('Connection error',err))
+
+  return connection
 }
 
-module.exports = { connect }
+function disconnect() {
+  if(!connection) return;
+  
+  mongoose.disconnect();
+}
+  
+function cleanup() {
+  for(const collection in connection.collections) {
+    connection.collections[collection].deleteMany({})
+  }
+}
+
+module.exports = { connect, cleanup, disconnect }
