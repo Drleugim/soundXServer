@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "cross-env MONGO_URI=mongodb://localhost:27017/soundx_db_test SECRET=somethingsecret jest -w 1"
+    "test": "cross-env MONGO_URI=mongodb://localhost:27017/soundx_db_test SECRET=as56dfASDo$asd75ufohdsfGG5SDu jest -w 1",
+    "test:watch": "yarn test --watchAll",
+    "test:coverage": "yarn test:watch --coverage"
   },
   "repository": "https://github.com/tanyalej/soundXServer.git",
   "author": "Tania <tanyalej@gmail.com>",

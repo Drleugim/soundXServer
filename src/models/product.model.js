@@ -27,6 +27,7 @@ const productSchema = new Schema({
     newUsed:{
       type:String,
       require: true,
+      minLength: [3,'Must be either new or used']
     },
     description:{
       type: String,

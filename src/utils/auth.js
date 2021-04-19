@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 exports.auth = (req, res, next) => {
   try {
-    const { authorization } = req.headers
+    const authorization = req.headers.authorization;
 
     if(!authorization) {
       throw new Error('Your session has expired')
@@ -20,6 +20,6 @@ exports.auth = (req, res, next) => {
 
     next()
   } catch(error) {
-    res.status(401).json({ message: `this error is: ${error.message}` })
+    res.status(401).json({ message: error.message })
   }
 }

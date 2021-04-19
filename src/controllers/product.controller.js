@@ -12,7 +12,7 @@ module.exports = {
       await userUser.save({ validateBeforeSave: false })
       res.status(201).json(product)
     } catch(error) {
-      res.status(400).json({ message: 'product could not be created', error })
+      res.status(401).json({ message: 'product could not be created', error })
     }
   },
   async buyRent(req, res) {
