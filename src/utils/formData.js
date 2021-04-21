@@ -29,7 +29,7 @@ exports.formData = (req, res, next) => {
     uploadingCount++
 
     const stream = cloudinary.uploader.upload_stream({
-      upload_preset: '',
+      upload_preset: 'SoundX',
     },
     (err, res) => {
       if(err) throw new Error('Something went wrong')

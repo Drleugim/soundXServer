@@ -23,4 +23,16 @@ module.exports = {
       res.status(401).json({ message: 'products could not be found', error })
     }
   },
+  async buyRentProduct(req, res) {
+    try {
+      const { productId } = req.params
+      const  product  = await Product
+        .findById(productId)
+        .populate('user', 'name email')
+        
+      res.status(200).json(product)
+    } catch(error) {
+      res.status(401).json({ message: 'products could not be found', error })
+    }
+  },
 }

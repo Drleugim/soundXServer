@@ -2,7 +2,6 @@ const req = require('supertest')
 const jwt = require('jsonwebtoken')
 const app = require('../app')
 const { connect, disconnect, cleanup } = require('../db')
-// const Product = require('../models/product.model')
 const User = require('../models/user.model')
 const faker = require('faker')
 
