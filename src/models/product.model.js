@@ -1,6 +1,14 @@
 const {model, Schema} = require('mongoose')
 
 const productSchema = new Schema({
+    status:{
+      type: String,
+      required: true,
+      enum: {
+        values: ['sell', 'rent', 'sellAndRent'],
+        message: 'Invalid product status, please select one'
+      }
+    },
     nameProduct:{
       type: String,
       required: true,
