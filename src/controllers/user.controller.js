@@ -50,7 +50,16 @@ module.exports = {
     try {
       const { user } = req
       const selectedUser = await User.findById(user)
-      res.status(200).json({name:selectedUser.name, email:selectedUser.email })
+      res.status(200).json({name:selectedUser.name, email:selectedUser.email, id:selectedUser._id })
+    } catch(error) {
+      res.status(400).json({ error })
+    }
+  },
+  async editUser(req, res) {
+    try {
+      const { body, params: { userId } } = req
+      const selectedUser = await User.findByIdAndUpdate(userId, body)
+      res.status(200).json(selectedUser)
     } catch(error) {
       res.status(400).json({ error })
     }
