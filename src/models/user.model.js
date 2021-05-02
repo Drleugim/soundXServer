@@ -42,6 +42,9 @@ const userSchema = new Schema({
     documentNumber:{type: String},
     products:{
       type:[{type: Schema.Types.ObjectId, ref: 'Products'}],
+    },
+    cart:{
+        type:{type: Schema.Types.ObjectId, ref: 'Cart'}
     }
 }, {
   timestamps: true,

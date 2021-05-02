@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const userRouter = require('./routes/user')
 const productRouter = require('./routes/product')
+const cartRouter = require('./routes/cart')
 
 const app = express();
 
@@ -13,5 +14,6 @@ app.use(morgan('dev'));
 
 app.use('/users', userRouter)
 app.use('/products', productRouter)
+app.use('/carts', cartRouter)
 
 module.exports = app
